@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formar Número Más Grande</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #FFA500; 
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #FFD700; 
+        }
+        .resultado {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formar el Número Más Grande</h1>
+    <input type="text" id="numeros" placeholder="Ingresa números separados por comas">
+    <button onclick="calcular()">Calcular</button>
+    <div class="resultado" id="resultado"></div>
+
+    <script>
+        function formarNumeroMasGrande(arreglo) {
+            arreglo.sort((a, b) => (b + '' + a) - (a + '' + b));
+            return arreglo.join('');
+        }
+
+        function calcular() {
+            const input = document.getElementById('numeros').value;
+            const numeros = input.split(',').map(num => num.trim()); 
+            const resultado = formarNumeroMasGrande(numeros);
+            document.getElementById('resultado').innerText = `El número más grande es: ${resultado}`;
+        }
+    </script>
+</body>
+</html>
